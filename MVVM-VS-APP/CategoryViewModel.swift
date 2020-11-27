@@ -16,6 +16,7 @@ class CategoryViewModel {
             do {
                 let categories = try JSONDecoder().decode([String: Category].self, from: data)
                 self?.categories.onNext(categories.map { $0.value })
+                self?.categories.onCompleted()
             } catch {
                 return
             }
